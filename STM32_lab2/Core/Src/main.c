@@ -307,10 +307,17 @@ void display7SEG(int num) {
 int counter = 100;
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	counter--;
+	if(counter == 50){
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
+		display7SEG(2);
+	}
 	if( counter <= 0) {
-	counter = 100;
-	HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin );
-	display7SEG(1);
+		counter = 100;
+		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+		HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin );
+		display7SEG(1);
 	}
 }
 /* USER CODE END 4 */
