@@ -178,8 +178,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(100);
   setTimer2(50);
-  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
-  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
+  setTimer3(100);
   while (1)
   {
 	  //RED_LED
@@ -192,7 +191,16 @@ int main(void)
 	  if(timer2_flag == 1){
 		  setTimer2(50);
 		  //TODO
+		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
+		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
 		  display7SEG(1);
+	  }
+	  if(timer3_flag == 1){
+		  setTimer3(100);
+		  //TODO
+		  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
+		  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
+		  display7SEG(2);
 	  }
 
     /* USER CODE END WHILE */
