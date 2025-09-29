@@ -352,13 +352,13 @@ void update7SEG ( int index ) {
 
 
 int counter = 100;
-int update = 50;
+int update = 25;
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
 	counter--;
 	update--;
 	//update
 	if(update <= 0){
-		update = 50;
+		update = 25;
 		if(index_led > 3){
 			index_led = 0;
 		}

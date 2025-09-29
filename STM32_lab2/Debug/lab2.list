@@ -930,7 +930,7 @@ void update7SEG ( int index ) {
 
 
 int counter = 100;
-int update = 50;
+int update = 25;
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
  80006e0:	b580      	push	{r7, lr}
  80006e2:	b082      	sub	sp, #8
@@ -954,9 +954,9 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim ){
  80006fe:	681b      	ldr	r3, [r3, #0]
  8000700:	2b00      	cmp	r3, #0
  8000702:	dc11      	bgt.n	8000728 <HAL_TIM_PeriodElapsedCallback+0x48>
-		update = 50;
+		update = 25;
  8000704:	4b13      	ldr	r3, [pc, #76]	; (8000754 <HAL_TIM_PeriodElapsedCallback+0x74>)
- 8000706:	2232      	movs	r2, #50	; 0x32
+ 8000706:	2219      	movs	r2, #25
  8000708:	601a      	str	r2, [r3, #0]
 		if(index_led > 3){
  800070a:	4b13      	ldr	r3, [pc, #76]	; (8000758 <HAL_TIM_PeriodElapsedCallback+0x78>)
