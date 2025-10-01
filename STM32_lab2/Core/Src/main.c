@@ -224,8 +224,16 @@ int main(void)
 						(pattern & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
 
   }
+  void shift_left(){
+	  uint8_t first_element = matrix_buffer[0];
+	  for (int i = 0; i < 7; i++) {
+		  matrix_buffer[i] = matrix_buffer[i + 1];
+	  }
+	  matrix_buffer[7] = first_element;
+  }
   setTimer0 (1000);
   setTimer1 (100);
+  setTimer2(800);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -241,6 +249,10 @@ int main(void)
 		  index_led_matrix++;
 		  if (index_led_matrix >= MAX_LED_MATRIX) index_led_matrix = 0;
 		  setTimer1(100);
+	  }
+	  if(timer2_flag == 1){
+		  shift_left();
+		  setTimer2(800);
 	  }
     /* USER CODE END WHILE */
 
